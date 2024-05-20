@@ -32,6 +32,9 @@ def read_file_as_image(data) -> np.ndarray:
     image = np.array(Image.open(BytesIO(data)).resize((256,256)))
     return image
 
+@app.get("/")
+def read_root():
+    return {"message": "Server started successfully!"}
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...)):
